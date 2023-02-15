@@ -1,3 +1,5 @@
+package restaurant;
+
 public class MenuItem {
    private String name;
    private String description;
@@ -55,11 +57,52 @@ public class MenuItem {
         this.category = category;
     }
 
-    public Boolean getNew() {
-        return isNew;
+    public Boolean isNew() {
+        return this.isNew;
     }
 
-    public void setNew(Boolean aNew) {
-        isNew = aNew;
+    public Boolean setIsNew(Boolean isNew) {
+        return this.isNew = isNew;
+    }
+
+    // prints out the menu item
+    @Override
+    public String toString() {
+
+       String returnString = "";
+
+       returnString += "Item Name: " + this.name + "\n";
+
+        returnString += "Item Description: " + this.description + "\n";
+
+        returnString += "Item Price: " + this.price + "\n";
+
+        returnString += "Item Category: " + this.category + "\n";
+
+        returnString += "Item Is New: " + this.isNew + "\n";
+
+        return returnString;
+
+
+    }
+
+    //determines is two menu items are equal
+    @Override
+    public boolean equals(Object obj) {
+       if (obj == this) return true;
+
+       if (!(obj instanceof MenuItem)) {
+           return false;
+       }
+       MenuItem menuItem = (MenuItem) obj;
+
+       if (menuItem.name.equals(this.name)
+               && menuItem.description.equals(this.description)
+               && menuItem.price.equals(this.price)
+               && menuItem.category.equals(this.category)
+               && menuItem.isNew.equals(this.isNew))
+           return true;
+       else return false;
+
     }
 }
